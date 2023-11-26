@@ -365,27 +365,31 @@
 <script >// Your JSON data
 
     const jsonData = myList;
-    const markers =[];
-    const map = L.map('map');   
-    map.setView([8.5445,76.9041],17) 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-    }).addTo(map);
-    var marker = L.marker([8.54311,76.90335]).addTo(map);
-    marker.bindPopup("<b>Mens Hostel , CET <b>");
     
-    
-    var cardContainer = document.getElementById('right');
-    
-    function renderHostels(hostels)
-    {
-        cardContainer.innerHTML = '';
-    
-        hostels.forEach(data =>{
-            var card = document.createElement('div');
-            card.className = 'card';
-    
-            card.innerHTML = `
+const markers =[];
+const map = L.map('map');   
+map.setView([8.5445,76.9041],17) 
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+}).addTo(map);
+var marker = L.marker([8.54311,76.90335]).addTo(map);
+marker.bindPopup("<b>Mens Hostel , CET <b>");
+
+
+var cardContainer = document.getElementById('right');
+
+function renderHostels(hostels) {
+    cardContainer.innerHTML = '';
+
+    hostels.forEach(data => {
+        var card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+            <div class='hostel' style="display:flex; justify-content:center;align-items:center;">
+                <img style='height:2.5rem ;width:4rem;object-fit:cover;align-self:flex-start;margin-top:5px' src="https://i.ibb.co/0KKkbpn/hostel.jpg" alt="" />
+            </div>
+            <div class='details'>
                 <h3>${data.name}</h3>
                 <p>Vacancy: ${data.vacancy}</p>
                 <div class='additional-info' style='display:none;'>
